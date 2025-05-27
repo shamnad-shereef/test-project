@@ -12,7 +12,7 @@ pipeline {
                 label "primary"
             }
             steps {
-                sh """
+                bash """
                     whoami
                     ls
                     if [ ! -d venv ];then
