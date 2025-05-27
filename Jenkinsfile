@@ -30,13 +30,14 @@ pipeline {
                 label "primary"
             }
             steps {
-            script {
-                sh """#!/bin/bash
-                    if [ -f venv/bin/activate ];then
-                    source venv/bin/activate
-                    flask --app main run
-                    fi
-                    """
+                script {
+                    sh """#!/bin/bash
+                        if [ -f venv/bin/activate ];then
+                        source venv/bin/activate
+                        flask --app main run
+                        fi
+                        """
+                }
             }
         }
     }
