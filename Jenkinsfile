@@ -1,10 +1,13 @@
 pipeline {
     agent any
 
+    environment {
+        NODE_VERSION = "12.0"
+    }
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                echo ${env.NODE_VERSION}
             }
         }
         stage('Test') {
