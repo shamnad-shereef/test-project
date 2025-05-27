@@ -12,15 +12,17 @@ pipeline {
                 label "primary"
             }
             steps {
-                sh """
-                    if [ ! -d venv ];then
-                    python3 -m venv venv
-                    fi
-                    if [ -f venv/bin/activate ];then
-                    venv/bin/activate
-                    fi
-                    pip install -r requirements.txt
-                    """
+                script {
+                    sh """#!/bin/bash
+                        if [ ! -d venv ];then
+                        python3 -m venv venv
+                        fi
+                        if [ -f venv/bin/activate ];then
+                        venv/bin/activate
+                        fi
+                        pip install -r requirements.txt
+                        """
+                }
             }
         }
         stage('deploy') {
@@ -28,7 +30,8 @@ pipeline {
                 label "primary"
             }
             steps {
-                sh """
+            script {
+                sh """#!/bin/bash
                     if [ -f venv/bin/activate ];then
                     source venv/bin/activate
                     flask --app main run
