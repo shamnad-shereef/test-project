@@ -15,7 +15,7 @@ pipeline {
                 script {
                     sh """#!/bin/bash
                         if [ ! -d venv ];then
-                        python3 -m venv venv
+                        source python3 -m venv venv
                         fi
                         if [ -f venv/bin/activate ];then
                         venv/bin/activate
