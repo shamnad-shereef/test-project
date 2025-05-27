@@ -10,10 +10,10 @@ pipeline {
         stage('setup') {
             steps {
                 sh """
-                    if [ ! -d "venv" ];then
+                    if [ ! -d venv ];then
                         python3 -m venv venv
                     fi
-                    if [ -f "venv/bin/activate ];then
+                    if [ -f venv/bin/activate ];then
                         source venv/bin/activate
                     fi
                     pip install -r requirements.txt
@@ -23,7 +23,7 @@ pipeline {
         stage('deploy') {
             steps {
                 sh """
-                    if [ -f "venv/bin/activate ];then
+                    if [ -f venv/bin/activate ];then
                         source venv/bin/activate
                     flask --app main run
                     fi
