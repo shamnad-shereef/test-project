@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label "main"
+    }
 
     environment {
         NODE_VERSION = "12.0"
@@ -7,7 +9,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo ${env.NODE_VERSION}
+                sh "ls"
             }
         }
         stage('Test') {
