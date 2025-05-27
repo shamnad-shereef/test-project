@@ -13,6 +13,8 @@ pipeline {
             }
             steps {
                 sh """
+                    whoami
+                    ls
                     if [ ! -d venv ];then
                     python3 -m venv venv
                     fi
