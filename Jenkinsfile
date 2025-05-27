@@ -15,10 +15,10 @@ pipeline {
                 script {
                     sh """#!/bin/bash
                         if [ ! -d venv ];then
-                        source python3 -m venv venv
+                        python3 -m venv venv
                         fi
                         if [ -f venv/bin/activate ];then
-                        venv/bin/activate
+                        source venv/bin/activate
                         fi
                         pip install -r requirements.txt
                         """
