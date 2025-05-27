@@ -7,19 +7,27 @@ pipeline {
         NODE_VERSION = "12.0"
     }
     stages {
-        stage('Build') {
+        stage('setup') {
             steps {
-                sh "ls"
+                sh """
+                    if [ ! -d "venv" ];then
+                        python3 -m venv venv
+                    fi
+                    if [ -f "venv/bin/activate ];then
+                        source venv/bin/activate
+                    fi
+                    pip install -r requirements.txt
+                    """
             }
         }
-        stage('Test') {
+        stage('deploy') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh """
+                    if [ -f "venv/bin/activate ];then
+                        source venv/bin/activate
+                    flask --app main run
+                    fi
+                    """
             }
         }
     }
