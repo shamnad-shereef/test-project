@@ -12,14 +12,12 @@ pipeline {
                 label "primary"
             }
             steps {
-                bash """
-                    whoami
-                    ls
+                sh """
                     if [ ! -d venv ];then
                     python3 -m venv venv
                     fi
                     if [ -f venv/bin/activate ];then
-                    source venv/bin/activate
+                    venv/bin/activate
                     fi
                     pip install -r requirements.txt
                     """
