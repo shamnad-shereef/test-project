@@ -6,6 +6,9 @@ pipeline {
     environment {
         NODE_VERSION = "12.0"
     }
+    triggers {
+        githubPullRequests events: [], spec: '* * * * *', triggerMode: 'CRON'
+    }
     stages {
         stage('setup') {
             agent {
