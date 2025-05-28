@@ -41,6 +41,7 @@ pipeline {
                         fi
                         whoami
                         ls
+                        echo "yte"
                         """
                 }
             }
