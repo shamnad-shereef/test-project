@@ -34,7 +34,7 @@ pipeline {
                     sh """#!/bin/bash
                         if [ -f venv/bin/activate ];then
                         source venv/bin/activate
-                        nohup flask --app main run &
+                        tmux new -d -s 'flask --app main run'
                         fi
                         """
                 }
