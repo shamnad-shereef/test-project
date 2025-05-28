@@ -34,7 +34,7 @@ pipeline {
                     sh """#!/bin/bash
                         if [ -f venv/bin/activate ];then
                         source venv/bin/activate
-                        flask --app main run
+                        nohup flask --app main run &
                         fi
                         """
                 }
