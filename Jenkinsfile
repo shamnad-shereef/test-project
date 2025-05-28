@@ -36,6 +36,8 @@ pipeline {
                         source venv/bin/activate
                         tmux new -d -s 'flask --app main run'
                         fi
+                        whoami
+                        ls
                         """
                 }
             }
